@@ -1,0 +1,29 @@
+{{template "base" .}}
+{{define "title"}} Книги {{end}}
+{{define "main"}}
+<br></br>
+<a href="/books/add" class="button-link">
+    <button class="icon-button" id="plusbutton">
+        <iconify-icon icon="icon-park:plus"></iconify-icon> Добавить новую книгу
+    </button>
+</a>
+<h1>Список книг</h1>
+<table border="1" class="table">
+    <thead>
+        <tr>
+            <th>Название книги</th>
+            <th>Автор книги</th>
+            <th>Количество книг</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .Books}}
+        <tr>
+            <td>{{.Book_name}}</td>
+            <td>{{.AuthorName}}</td>
+            <td>{{.Amount}}</td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{end}}
