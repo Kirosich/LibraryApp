@@ -1,0 +1,23 @@
+{{template "base" .}}
+{{define "title"}} Добавление книги {{end}}
+{{define "main"}}
+<h1>Добавить новую книгу</h1>
+<form action="/books/add/ready" method="POST">
+    <div id="label">
+        <label for="book_name"><b>Название книги</b>:</label>
+        <input type="text" id="book_name" name="book_name" required><br>
+    </div>
+    <div id="label">
+    <label for="author_code"><b>Код автора:</b></label>
+    <input type="text" id="author_code" name="author_code" required><br>
+    </div>
+    <div id="label"></div>
+    <label for="year_pub"><b>Год публикации:</b></label>
+    <input type="text" id="year_pub" name="year_pub" required><br>
+    <div id="label">
+    <label for="amount"><b>Количество книг:</b></label>
+    <input type="text" id="amount" name="amount" required><br>
+    </div>
+    <input id="submit" type="submit" value="Добавить книгу">
+</form>
+{{end}}

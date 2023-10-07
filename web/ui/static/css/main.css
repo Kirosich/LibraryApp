@@ -1,0 +1,55 @@
+body {
+    background-color: #dbdbdb; /* Замените #ffcc00 на нужный вам цвет */
+}
+.icon-button{
+    width: 80px;
+    height: 80px;
+    background-color: #e6e6e6; /* Цвет фона кнопки */
+    color: #000000; /* Цвет текста на кнопке */
+    border: none; /* Убирает границу кнопки */
+    border-radius: 5px; /* Скругление углов кнопки */
+    cursor: pointer; /* Курсор указателя при наведении */
+    transition: background-color 0.3s; /* Плавное изменение цвета фона */
+}
+
+.icon-button iconify-icon {
+    font-size: 50px; /* Измените это значение на желаемый размер иконки */
+}
+
+.icon-button:hover {
+    background-color: #ffffff; /* Задает цвет фона кнопки при наведении */
+  }
+
+.button-link {
+    text-decoration: none;
+}
+
+table {
+    margin-top:20px;
+    border-collapse: collapse;
+}
+th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+/* Стиль для ячеек данных */
+td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+#plusbutton{
+    padding-bottom: 110px;
+}
+
+#label{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#submit{
+    width:130px;
+    height:40px;
+    font-weight: bold;
+}
