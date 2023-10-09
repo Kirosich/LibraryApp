@@ -2,18 +2,10 @@ package transport
 
 import (
 	"LibraryApp/internal/database"
-	"LibraryApp/internal/models"
 	"database/sql"
 	"fmt"
 	"net/http"
 )
-
-type ViewData struct {
-	Title      string
-	Authors    []*models.Authors
-	Books      []*models.Books
-	BookAuthor string
-}
 
 func Home(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	app := &database.ConnectionBase{
@@ -36,6 +28,7 @@ func Books(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	files := []string{
 		"web/ui/html/books.page.tmpl",
 		"web/ui/html/base.layout.tmpl",
+		"web/ui/html/books-addbutton.partial.tmpl",
 	}
 
 	render(w, app, files)
@@ -49,6 +42,7 @@ func AddBook(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	files := []string{
 		"web/ui/html/booksadd.page.tmpl",
 		"web/ui/html/base.layout.tmpl",
+		"web/ui/html/books-addbutton.partial.tmpl",
 	}
 
 	render(w, app, files)
@@ -86,6 +80,20 @@ func Issuetable(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	files := []string{
 		"web/ui/html/issuetable.page.tmpl",
 		"web/ui/html/base.layout.tmpl",
+		"web/ui/html/issuetable-buttons.partial.tmpl",
+	}
+
+	render(w, app, files)
+}
+
+func IssuetableExpired(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+	app := &database.ConnectionBase{
+		DB: db,
+	}
+	files := []string{
+		"web/ui/html/issuetable-expired.page.tmpl",
+		"web/ui/html/base.layout.tmpl",
+		"web/ui/html/issuetable-buttons.partial.tmpl",
 	}
 
 	render(w, app, files)

@@ -1,0 +1,34 @@
+{{template "base" .}}
+{{define "title"}} Выдачи {{end}}
+{{define "main"}}
+{{template "issuetable-buttons" .}}
+
+<p style="font-size:16px;">Поиск по таблице: <input type="text" id="searchInput" placeholder="Поиск..."></p>
+<h1>Таблица просрочивших сдачу</h1>
+<table border="1" class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>Название книги</th>
+            <th>ФИО читателя</th>
+            <th>Номер читателя</th>
+            <th>Дата выдачи</th>
+            <th>Дата сдачи</th>
+            <th>Просрочен</th>
+        </tr>
+    </thead>
+    <tbody id="content">
+        {{range .Issues}}
+        {{if .IsExpired}}
+        <tr>
+            <td>{{.Book_name}}</td>
+            <td>{{.Reader_Fullname}}</td>
+            <td>{{.Reader_Phone}}</td>
+            <td>{{.Formatted_issue}}</td>
+            <td>{{.Formatted_return}}</td>
+            <td><p style="color:red;">Да</p></td>
+        </tr>
+        {{end}}
+        {{end}}
+    </tbody>
+</table>
+{{end}}

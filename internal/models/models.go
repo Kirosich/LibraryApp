@@ -1,5 +1,7 @@
 package models
 
+//"time"
+
 type Authors struct { // Таблица авторов книг
 	AuthorCode int
 	Fullname   string
@@ -22,9 +24,15 @@ type Readers struct { // Таблица читателей
 }
 
 type Issues struct { // Таблица выдачи
-	Issue_code    int
-	BookCode      int
-	Issue_date    string
-	Delivery_date string
-	Ticket        int
+	Issue_code       int
+	BookCode         int
+	Issue_date       string
+	Return_date      string
+	Ticket           int
+	Formatted_issue  string
+	Formatted_return string
+	IsExpired        bool
+	Book_name        string
+	Reader_Fullname  string
+	Reader_Phone     string
 }
