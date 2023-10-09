@@ -44,6 +44,9 @@ func main() {
 	router.HandleFunc("/issuetable", func(w http.ResponseWriter, r *http.Request) {
 		transport.Issuetable(w, r, db)
 	})
+	router.HandleFunc("/issuetable/expired", func(w http.ResponseWriter, r *http.Request) {
+		transport.IssuetableExpired(w, r, db)
+	})
 
 	// Инициализируем FileServer, он будет обрабатывать
 	// HTTP-запросы к статическим файлам из папки "./ui/static".

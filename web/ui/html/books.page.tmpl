@@ -2,13 +2,11 @@
 {{define "title"}} Книги {{end}}
 {{define "main"}}
 <br></br>
-<a href="/books/add" class="button-link">
-    <button class="icon-button" id="plusbutton">
-        <iconify-icon icon="icon-park:plus"></iconify-icon> Добавить новую книгу
-    </button>
-</a>
+{{template "books-addbutton" .}}
+
+<p style="font-size:16px;">Поиск по таблице: <input type="text" id="searchInput" placeholder="Поиск..."></p>
 <h1>Список книг</h1>
-<table border="1" class="table">
+<table border="1" class="table" id="myTable">
     <thead>
         <tr>
             <th>Название книги</th>
