@@ -139,3 +139,30 @@ func (m *ConnectionBase) GetReaderForIssue(Ticket int, book_code int) (string, s
 	}
 	return Fullname, Phone, Book_Name, nil
 }
+
+func (m *ConnectionBase) GetAllReaders() ([]*models.Readers, error) {
+	query := `
+		SELECT * FROM readers
+	`
+
+	rows, err := m.DB.Query(query)
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+
+	var readers []*models.Readers
+
+	for rows.Next() {
+		s := &models.Readers{}
+		err = rows.Scan(&s.Ticket, &s.Fullname, &s.Adress, &s.Phone)
+		if err != nil {
+			return nil, err
+		}
+		readers = append(readers, s)
+
+	}
+
+	return readers, nil
+}

@@ -1,0 +1,23 @@
+{{template "base" .}}
+{{define "title"}} Выдачи {{end}}
+{{define "main"}}
+{{template "issuetable-buttons" .}}
+
+
+<h1>Выдать книгу</h1>
+<form action="/issuetable/givebook/ready" method="POST">
+    <div id="label">
+        <label for="user_ticket"><b>Билет читателя</b>:</label>
+        <input type="text" id="user_ticket" name="user_ticket" placeholder="2" required><br>
+    </div>
+    <div id="label">
+    <label for="book_code"><b>Номер книги:</b></label>
+    <input type="text" id="book_code" name="book_code" placeholder="5" required><br>
+    </div>
+    <div id="label"></div>
+    <br>
+    <input id="submit" type="submit" value="Выдать книгу" style="width:150px;">
+</form>
+    </tbody>
+</table>
+{{end}}

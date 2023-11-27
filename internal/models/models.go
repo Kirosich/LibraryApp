@@ -20,7 +20,7 @@ type Readers struct { // Таблица читателей
 	Ticket   int
 	Fullname string
 	Adress   string
-	phone    string
+	Phone    string
 }
 
 type Issues struct { // Таблица выдачи

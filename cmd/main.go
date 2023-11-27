@@ -35,6 +35,9 @@ func main() {
 	router.HandleFunc("/books", func(w http.ResponseWriter, r *http.Request) {
 		transport.Books(w, r, db)
 	})
+	router.HandleFunc("/changeAmount", func(w http.ResponseWriter, r *http.Request) {
+		transport.BooksAmount(w, r, db)
+	})
 	router.HandleFunc("/books/add", func(w http.ResponseWriter, r *http.Request) {
 		transport.AddBook(w, r, db)
 	})
@@ -46,6 +49,21 @@ func main() {
 	})
 	router.HandleFunc("/issuetable/expired", func(w http.ResponseWriter, r *http.Request) {
 		transport.IssuetableExpired(w, r, db)
+	})
+	router.HandleFunc("/issuetable/newmember", func(w http.ResponseWriter, r *http.Request) {
+		transport.IssueNewMember(w, r, db)
+	})
+	router.HandleFunc("/issuetable/newmember/ready", func(w http.ResponseWriter, r *http.Request) {
+		transport.IssueNewMemberReady(w, r, db)
+	})
+	router.HandleFunc("/issuetable/allmembers", func(w http.ResponseWriter, r *http.Request) {
+		transport.IssueAllMembers(w, r, db)
+	})
+	router.HandleFunc("/issuetable/givebook", func(w http.ResponseWriter, r *http.Request) {
+		transport.IssueGiveBook(w, r, db)
+	})
+	router.HandleFunc("/issuetable/givebook/ready", func(w http.ResponseWriter, r *http.Request) {
+		transport.IssueGiveBookReady(w, r, db)
 	})
 
 	// Инициализируем FileServer, он будет обрабатывать

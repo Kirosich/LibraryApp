@@ -1,0 +1,22 @@
+{{template "base" .}}
+{{define "title"}} Выдачи {{end}}
+{{define "main"}}
+{{template "issuetable-buttons" .}}
+
+
+<h1>Добавить нового читателя</h1>
+<form action="/issuetable/newmember/ready" method="POST">
+    <div id="label">
+        <label for="user_fio"><b>ФИО Читателя</b>:</label>
+        <input type="text" id="user_fio" name="user_fio" placeholder="Малыгин Илья Николаевич" required><br>
+    </div>
+    <div id="label">
+    <label for="user_adress"><b>Адрес читателя:</b></label>
+    <input type="text" id="user_adress" name="user_adress" placeholder="ул. Пушкина, д. 10" required><br>
+    </div>
+    <div id="label"></div>
+    <label for="user_phone"><b>Телефон читателя:</b></label>
+    <input type="text" id="user_phone" name="user_phone" placeholder="+79662580211" required><br></br>
+    <input id="submit" type="submit" value="Добавить читателя" style="width:150px;">
+</form>
+{{end}}
