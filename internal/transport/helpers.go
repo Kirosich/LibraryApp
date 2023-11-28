@@ -15,6 +15,7 @@ type ViewData struct {
 	Books      []*models.Books
 	BookAuthor string
 	Issues     []*models.Issues
+	Readers    []*models.Readers
 }
 
 func handleError(w http.ResponseWriter, err error) {
@@ -22,6 +23,13 @@ func handleError(w http.ResponseWriter, err error) {
 }
 
 func render(w http.ResponseWriter, app *database.ConnectionBase, files []string) {
+
+	//Инициализация всех читателей
+	readers, err := app.GetAllReaders()
+	if err != nil {
+		handleError(w, err)
+		return
+	}
 
 	//Инициализация всех авторов
 	authors, err := app.AuthorsAll()
@@ -104,6 +112,7 @@ func render(w http.ResponseWriter, app *database.ConnectionBase, files []string)
 		Authors: authors,
 		Books:   books,
 		Issues:  issues,
+		Readers: readers,
 	}
 	if err != nil {
 		handleError(w, err)

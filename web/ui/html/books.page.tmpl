@@ -12,6 +12,7 @@
             <th>Название книги</th>
             <th>Автор книги</th>
             <th>Количество книг</th>
+            <th>Код книги для выдачи</th>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +20,26 @@
         <tr>
             <td>{{.Book_name}}</td>
             <td>{{.AuthorName}}</td>
-            <td>{{.Amount}}</td>
+            <td>
+                <span id="amount{{.BookCode}}">{{.Amount}}</span>
+                <button onclick="changeAmount('{{.BookCode}}', 'increment')">+</button>
+                <button onclick="changeAmount('{{.BookCode}}', 'decrement')">-</button>
+            </td>
+            <td>{{.BookCode}}</td>
         </tr>
         {{end}}
     </tbody>
 </table>
+<script>
+    function changeAmount(bookCode, action) {
+        // Отправляем запрос на сервер для изменения количества
+        fetch(`/changeAmount?bookCode=${bookCode}&action=${action}`)
+            .then(response => response.json())
+            .then(data => {
+                // Обновляем отображаемое количество на странице
+                document.getElementById(`amount${bookCode}`).innerText = data.newAmount;
+            })
+            .catch(error => console.error('Ошибка:', error));
+    }
+</script>
 {{end}}

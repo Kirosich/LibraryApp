@@ -1,0 +1,30 @@
+{{template "base" .}}
+{{define "title"}} Выдачи {{end}}
+{{define "main"}}
+{{template "issuetable-buttons" .}}
+
+
+<h1>Все читатели</h1>
+<p style="font-size:16px;">Поиск по таблице: <input type="text" id="searchInput" placeholder="Поиск..."></p>
+<table border="1" class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>Номер билета</th>
+            <th>ФИО читателя</th>
+            <th>Адрес читателя</th>
+            <th>Номер читателя</th>
+        </tr>
+    </thead>
+    <tbody id="content">
+        {{range .Readers}}
+        <tr>
+            <td>{{.Ticket}}</td>
+            <td>{{.Fullname}}</td>
+            <td>{{.Adress}}</td>
+            <td>{{.Phone}}</td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+
+{{end}}
