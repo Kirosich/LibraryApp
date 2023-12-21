@@ -11,6 +11,7 @@ import (
 )
 
 func Home(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+
 	app := &database.ConnectionBase{
 		DB: db,
 	}
@@ -27,7 +28,6 @@ func Books(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	app := &database.ConnectionBase{
 		DB: db,
 	}
-
 	files := []string{
 		"web/ui/html/books.page.tmpl",
 		"web/ui/html/base.layout.tmpl",
