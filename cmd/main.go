@@ -44,7 +44,7 @@ func basicAuthMiddleware(r *mux.Router, db *sql.DB) mux.MiddlewareFunc {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 			user, pass, ok := req.BasicAuth()
-			fmt.Println("Username:", user)
+
 			if !ok || !checkCredentials(user, pass, db) || isLoggedOut {
 				w.Header().Set("WWW-Authenticate", `Basic realm="Restricted"`)
 				w.WriteHeader(http.StatusUnauthorized)
